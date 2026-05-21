@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commission Amount Calculator</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#f2f2f2;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+
+    .box{
+      background:white;
+      padding:30px;
+      border-radius:12px;
+      width:350px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2{
+      text-align:center;
+      margin-bottom:20px;
+    }
+
+    label{
+      display:block;
+      margin-top:15px;
+      font-weight:bold;
+    }
+
+    input{
+      width:100%;
+      padding:10px;
+      margin-top:5px;
+      border:1px solid #ccc;
+      border-radius:8px;
+      font-size:16px;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      margin-top:20px;
+      border:none;
+      background:#28a745;
+      color:white;
+      font-size:18px;
+      border-radius:8px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#1e7e34;
+    }
+
+    .result{
+      margin-top:20px;
+      text-align:center;
+      font-size:20px;
+      font-weight:bold;
+      color:#007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Commission Amount Calculator</h2>
+
+    <label>Total Income</label>
+    <input type="number" id="income" placeholder="Enter total income">
+
+    <label>Commission Percentage (%)</label>
+    <input type="number" id="percentage" placeholder="Enter commission %">
+
+    <button onclick="calculateCommission()">
+      Calculate Commission
+    </button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateCommission(){
+
+      let income = parseFloat(document.getElementById("income").value);
+      let percentage = parseFloat(document.getElementById("percentage").value);
+
+      if(isNaN(income) || isNaN(percentage) || income <= 0){
+        document.getElementById("result").innerHTML =
+          "Please enter valid values";
+        return;
+      }
+
+      let commission = (income * percentage) / 100;
+
+      document.getElementById("result").innerHTML =
+        "Commission Amount: ₹" + commission.toFixed(2);
+    }
+  </script>
+
+</body>
+</html>
